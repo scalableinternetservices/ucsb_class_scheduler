@@ -1,0 +1,95 @@
+{
+  "C1": [
+    "TMP 255",
+    "Jon Arran",
+    "Girvitz 253",
+    "Fall,",
+    "0800",
+    "0945",
+    "mon,thu"
+  ],
+  "C2": [
+    "TMP 190",
+    "Bran Arran",
+    "Phelps 253",
+    "Fall,",
+    "0800",
+    "0945",
+    "mon,fri"
+  ],
+
+  "C3": [
+    "CS 255",
+    "Jon Bro",
+    "Girvitz 253",
+    "Fall,",
+    "1000",
+    "1145",
+    "mon,wed"
+  ],
+
+  "C4": [
+    "ESS 131",
+    "Jon Friend",
+    "HFH 253",
+    "Fall,",
+    "0800",
+    "0930",
+    "mon,thu"
+  ],
+  "C5": [
+    "PSY 124",
+    "Will Arran",
+    "Girvitz 1342",
+    "Fall,",
+    "0800",
+    "0930",
+    "tue,thu"
+  ],
+  "C6": [
+    "CS 192A",
+    "Jon Arran",
+    "Girvitz 666",
+    "Fall,",
+    "1200",
+    "1330",
+    "mon,thu"
+  ],
+  "C7": [
+    "TMP 56",
+    "Alison Brad",
+    "Girvitz 253",
+    "Fall,",
+    "0800",
+    "0930",
+    "mon,thu"
+  ],
+  "C8": [
+    "CS 123",
+    "Easy A",
+    "Phelps 456",
+    "Fall,",
+    "1500",
+    "1645",
+    "mon,tue"
+  ],
+  "C9": [
+    "ESS 50",
+    "Jon Arran",
+    "Outside",
+    "Fall,",
+    "0800",
+    "0930",
+    "mon,wed"
+  ],
+  "C10": [
+    "TMP 152",
+    "Rygg Arran",
+    "Phelps 253",
+    "Fall,",
+    "0800",
+    "0930",
+    "wed,thu"
+  ]
+
+}
