@@ -27,10 +27,13 @@
 *.DS_Store
 out/
 
-# ignore create-react-app stuff
+# Ignore create-react-app stuff
 public/manifest.json
 public/asset-manifest.json
 public/service-worker.js
 public/static/
 public/index.html
 public/favicon.ico
+
+# In case someone runs yarn while not in the client folder
+yarn.lock
