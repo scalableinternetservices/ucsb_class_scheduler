@@ -5,6 +5,13 @@ Rails:
 
 AllCops:
   TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+Style/Documentation:
+  Enabled: false
 
 Layout/Tab:
   Enabled: false
