@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
-File.open("CourseData.txt").each do |line|
+File.open("data.txt").each do |line|
+
   parsed_course = JSON.parse(line) #Every line in a the .txt file represents an JSON course object with belonging time objects
   department = parsed_course["department"]
   grading_option = parsed_course["grading_option"]
@@ -15,7 +16,7 @@ File.open("CourseData.txt").each do |line|
   students_enrolled_max  = parsed_course["max_students"]
   units= parsed_course["units"]
   description= parsed_course["desc"]
-  instructor= parsed_course["instructors"] #returns instructors separated by comma
+  instructor_name= parsed_course["instructors"] #returns instructors separated by comma
 
   is_graduate_course = parsed_course['is_grad']
   #Course.create( department,id,description,units,grading_option, students_enrolled_max,instructor)
@@ -23,10 +24,20 @@ File.open("CourseData.txt").each do |line|
   #prequisites= parsed_course["prequisites"]
   #is_graduate_course not scraping this as of now
 
-  print(department,grading_option,name,id,description,instructor)
-  course = Course.create(department: department, course_no: id, description: description,
+  print(department+"\n",grading_option+"\n",name+"\n",id+"\n",description+"\n",instructor_name)
+  if instructor_name.include? ","
+    instructor_name = instructor_name.split(",")[0]
+  end
+
+  if Instructor.exists?(id: instructor_name)
+    instructor = Instructor.find(id: instructor_name)
+  else
+    instructor = Instructor.create(instructor_name)
+  end
+
+  course = instructor.courses.create(dept: department, course_no: id, description: description,
                          units: units, grading_opts: grading_option,max_class_size: students_enrolled_max,
-                         instructor_id: instructor)
+                         instructor_id: instructor_name)
 
   parsed_course["timeslots"].each do |time|
     days_to_repeat = time["days"]
@@ -39,7 +50,7 @@ File.open("CourseData.txt").each do |line|
     #instructor = time["instructor"]
     #Course.times.create(...)
     print(days_to_repeat,room,start_time,end_time) #gteiorio  
-    course.periods.create(start_time: start_time, end_time: end_time, days: days, type: type, room: room)
+    instructor.courses.periods.create(start_time: start_time, end_time: end_time, days: days, type: type, room: room)
     break
   end
   break
