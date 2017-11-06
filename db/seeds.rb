@@ -38,7 +38,7 @@ File.open("CourseData.txt").each do |line|
     #enrolled_count = time["enrolled_count"]
     #instructor = time["instructor"]
     #Course.times.create(...)
-    print(days_to_repeat,room,start_time,end_time)
+    print(days_to_repeat,room,start_time,end_time) #gteiorio  
     course.periods.create(start_time: start_time, end_time: end_time, days: days, type: type, room: room)
     break
   end
