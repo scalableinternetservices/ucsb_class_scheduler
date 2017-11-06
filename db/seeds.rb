@@ -15,21 +15,8 @@ File.open("data.txt").each do |line|
   if instructor_name.include? ","
     instructor_name = instructor_name.split(",")[0]
   end
-  if Instructor.exists? instructor_name
-    instructor = Instructor.find(instructor_name)
-  else
-    instructor = Instructor.create(id: instructor_name, rmp_url: "lol")
-  end
-  puts id
-  if instructor.courses.exists? course_no: id, dept: department, instructor_id: instructor_name
-    course = instructor.courses.find course_no: id, dept: department, instructor_id: instructor_name
-  else
-    course = instructor.courses.create(dept: department, course_no: id, description: description,
-                                       units: units, grading_opts: grading_option,max_class_size: students_enrolled_max,
-                                       instructor_id: instructor_name, is_graduate_course: is_graduate_course,
-                                       prerequisites: prerequisites, currently_enrolled_students: students_enrolled_actually,
-                                       full_name: name)
-  end
+  instructor = Instructor.where(id: instructor_name).first_or_create(rmp_url: "lol")
+  course = instructor.courses.where(dept: department, course_no: id).first_or_create(description: description, units: units, grading_opts: grading_option, max_class_size: students_enrolled_max, instructor_id: instructor_name, is_graduate_course: is_graduate_course, prerequisites: prerequisites, currently_enrolled_students: students_enrolled_actually, full_name: name)
   parsed_course["timeslots"].each do |time|
     days = time["days"]
     room = time["location"]
@@ -39,15 +26,15 @@ File.open("data.txt").each do |line|
     enrolled_max = time["enrolled_max"]
     enrolled_count = time["enrolled_count"]
     instructor = time["instructor"]
-    puts 'startTime:'+start_time
     if start_time == ""
       start_time = "00:00pm"
     end
-
     if end_time == ""
       end_time = "00:00pm"
     end
-    course.periods.create(start_time: start_time, end_time: end_time, days: days, period_type: type, location: room,
-                          currently_enrolled_students: enrolled_count, max_class_size: enrolled_max, instructor_name: instructor)
+    course.periods.where(start_time: start_time, end_time: end_time, days: days, period_type: type, location: room,
+                         instructor_name: instructor).first_or_create(currently_enrolled_students: enrolled_count,
+                                                                      max_class_size: enrolled_max)
   end
 end
+puts 'Database now has ' + Course.all.count.to_s + ' courses'
