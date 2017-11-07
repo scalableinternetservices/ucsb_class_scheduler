@@ -1,0 +1,17 @@
+branch-defaults:
+  add-data-to-models:
+    environment: UcsbClassScheduler-env
+global:
+  application_name: ucsb_class_scheduler
+  branch: null
+  default_ec2_keyname: ucsb_class_scheduler
+  default_platform: Ruby 2.4 (Puma)
+  default_region: us-west-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: git
+  workspace_type: Application
