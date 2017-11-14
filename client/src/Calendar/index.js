@@ -60,7 +60,7 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div style={{width: 600}}>
+      <div style={{width: 1000}}>
         <DragAndDropCalendar
           {...this.props}
           defaultView="week"

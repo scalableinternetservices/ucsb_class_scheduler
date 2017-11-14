@@ -16,7 +16,7 @@ class Results extends Component {
 
     return (
       <Table>
-        <TableHeader>
+        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
             <TableHeaderColumn>Times</TableHeaderColumn>

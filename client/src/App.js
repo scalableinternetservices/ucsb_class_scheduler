@@ -4,6 +4,8 @@ import Calendar from "./Calendar";
 import Results from "./Results";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
+import './App.css'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,7 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <div>
+        <div className='App-body'>
           <Calendar
             events={this.state.events}
             addEvent={this.addEvent}
