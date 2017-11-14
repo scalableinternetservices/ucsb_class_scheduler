@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109194857) do
+ActiveRecord::Schema.define(version: 20171114021330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20171109194857) do
     t.string "grading_opts"
     t.integer "max_class_size"
     t.string "instructor_id"
+    t.boolean "is_graduate_course"
+    t.string "name"
     t.index ["instructor_id", "dept", "course_no"], name: "index_courses_on_instructor_id_and_dept_and_course_no", unique: true
     t.index ["instructor_id"], name: "index_courses_on_instructor_id"
   end
@@ -46,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171109194857) do
     t.time "start_time"
     t.time "end_time"
     t.string "days"
-    t.string "type"
+    t.string "period_type"
     t.string "location"
     t.bigint "course_id"
     t.index ["course_id"], name: "index_periods_on_course_id"
