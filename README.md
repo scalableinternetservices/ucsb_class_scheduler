@@ -25,4 +25,50 @@ Our application would allow students to intuitively choose the best schedule for
 
 ## [Even Skari](https://github.com/evenskari)
 
-<imidth="300" height="300" src="https://avatars2.githubusercontent.com/u/11603089">
+<img width="300" height="300" src="https://avatars2.githubusercontent.com/u/11603089">
+
+# Getting started
+
+First install Yarn from [here](https://yarnpkg.com/lang/en/docs/install/)
+  
+Find your workspace folder and clone the repository
+```
+git clone https://github.com/scalableinternetservices/ucsb_class_scheduler.git
+```
+
+
+While being in the newly cloned directory, configure and update gems by running
+```
+bundle install
+```
+
+# Configure PostgreSQL
+
+This project uses PostgreSQL for database, which requires some configuration. Install PostgreSQL from [here](https://www.postgresql.org/download/), then open the PostgreSQL console in a terminal
+```
+psql -U postgres
+```
+Create user with rights to create database
+```
+createuser ucsb_class_scheduler with CREATEDB;
+```
+Create the database
+```
+rails db:create
+```
+Update the database tables
+```
+rails db:migrate
+```
+Fill the database with data
+```
+rails db:seed
+```
+Then you can log into the rails console to verify that database has data
+```
+rails console
+```
+For example, you can check how many courses exist by running
+```
+Course.all.count
+```
