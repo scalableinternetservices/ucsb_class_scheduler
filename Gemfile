@@ -59,6 +59,7 @@ end
 gem 'pg'
 gem 'bcrypt'
 gem 'knock'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 
 gem 'email_validator'
 
