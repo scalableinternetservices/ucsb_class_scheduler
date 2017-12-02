@@ -2,6 +2,7 @@ class AggregateCoursesJob < ApplicationJob
 	queue_as :default
 
 	def perform(*)
+		Rails.logger.info "aggregate courses job started"
 		temp_table_name = 'course_likes_temp'
 
 		ActiveRecord::Base.transaction do
@@ -10,6 +11,7 @@ class AggregateCoursesJob < ApplicationJob
 			end
 			ActiveRecord::Base.connection.execute(generate_index_sql(temp_table_name))
 		end
+		Rails.logger.info "aggregate courses job started"
 	end
 
 		private
