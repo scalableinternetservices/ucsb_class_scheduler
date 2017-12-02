@@ -58,6 +58,7 @@ class AggregateCoursesJob < ApplicationJob
 	    	#{course_pkey(*args)}
 	    	#{instructor_dept_course_index(*args)}
 	    	#{instructor_index(*args)}
+	    	#{likes_index(*args)}
 	    SQL
 	end
 
@@ -77,6 +78,12 @@ class AggregateCoursesJob < ApplicationJob
 	def instructor_index(table_name, timestamp)
 		<<-SQL
 			CREATE INDEX index_courses_on_instructor_id_#{timestamp} ON "#{table_name}" USING btree (instructor_id);
+		SQL
+	end
+
+	def likes_index(table_name, timestamp)
+		<<-SQL
+			CREATE INDEX index_courses_on_likes_#{timestamp} ON "#{table_name}" USING btree (likes);
 		SQL
 	end
 end
