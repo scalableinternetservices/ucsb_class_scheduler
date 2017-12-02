@@ -1,18 +1,19 @@
 class AggregateCoursesJob < ApplicationJob
 	queue_as :default
 
-	def perform(*args)
+	def perform(*)
 		temp_table_name = 'course_likes_temp'
 
 		ActiveRecord::Base.transaction do
-			safe_replace_table(temp_table_name) do 
+			safe_replace_table(temp_table_name) do
 				ActiveRecord::Base.connection.execute(generate_temp_table_sql(temp_table_name + '_new'))
 			end
 			ActiveRecord::Base.connection.execute(generate_index_sql(temp_table_name))
 		end
 	end
 
-private
+		private
+
 	def safe_replace_table(temp_table_name)
 		yield
 		ActiveRecord::Base.connection.execute(alter_table_if_exists(temp_table_name))
