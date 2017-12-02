@@ -37,3 +37,9 @@ public/favicon.ico
 
 # In case someone runs yarn while not in the client folder
 yarn.lock
+*.pem
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
