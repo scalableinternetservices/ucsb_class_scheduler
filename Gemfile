@@ -60,6 +60,7 @@ gem 'pg'
 gem 'bcrypt'
 gem 'knock'
 gem 'faker'
+gem 'clockwork'
 
 gem 'email_validator'
 
